@@ -60,6 +60,7 @@ const btnClose = document.querySelector(".form__btn--close");
 const btnSort = document.querySelector(".btn--sort");
 
 const inputLoginUsername = document.querySelector(".login__input--user");
+
 const inputLoginPin = document.querySelector(".login__input--pin");
 const inputTransferTo = document.querySelector(".form__input--to");
 const inputTransferAmount = document.querySelector(".form__input--amount");
@@ -215,9 +216,9 @@ let currentAccount, timer;
 // IMPLEMENTNG LOGIN
 btnLogin.addEventListener("click", function (e) {
   e.preventDefault();
-
+  const inputValue = inputLoginUsername.value;
   currentAccount = accounts.find(
-    (acc) => acc.username === inputLoginUsername.value,
+    (acc) => acc.username === inputValue.toLowerCase(),
   );
 
   if (currentAccount?.pin === +inputLoginPin.value) {
@@ -315,8 +316,10 @@ btnLoan.addEventListener("click", function (e) {
 btnClose.addEventListener("click", function (e) {
   e.preventDefault();
 
+  const inputValue = inputCloseUsername.value;
+
   if (
-    inputCloseUsername.value === currentAccount.username &&
+    inputValue.toLowerCase() === currentAccount.username &&
     +inputClosePin.value === currentAccount.pin
   ) {
     const index = accounts.findIndex(
