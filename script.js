@@ -264,8 +264,10 @@ btnTransfer.addEventListener("click", function (e) {
   e.preventDefault();
 
   const amount = +inputTransferAmount.value;
+const inputValue = inputTransferTo.value;
+
   const recieverAcc = accounts.find(
-    (acc) => acc.username === inputTransferTo.value,
+    (acc) => acc.username === inputValue.toLowerCase(),
   );
 
   inputTransferAmount.value = inputTransferTo.value = "";
